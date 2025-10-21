@@ -7,6 +7,9 @@ services:
       - traefik.docker.network=traefik-public
       - traefik.http.routers.portainer.rule=Host(`${PORTAINER_DOMAIN:-portainer.local}`)
       - traefik.http.routers.portainer.entrypoints=http
+      - traefik.http.routers.portainer.service=portainer
+      - traefik.http.routers.portainer.middlewares=portainer-auth
+      - traefik.http.middlewares.portainer-auth.basicauth.users=admin:$$2y$$05$$CdpY7AVW.bmxlKWeZ3XoSOEPjgwcMdDKn7tEO.AR/piwgKjHFIwuG
       - traefik.http.services.portainer.loadbalancer.server.port=9000
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock

@@ -9,10 +9,12 @@ services:
       - traefik.enable=true
       # Use the traefik-public network (declared below)
       - traefik.docker.network=traefik-public
-      # Optional: Enable Traefik dashboard (uncomment if needed)
-      # - traefik.http.routers.traefik-public-http.rule=Host(`${TRAEFIK_DOMAIN:-traefik.local}`)
-      # - traefik.http.routers.traefik-public-http.entrypoints=http
-      # - traefik.http.routers.traefik-public-http.service=api@internal
+      # Enable Traefik dashboard with authentication
+      - traefik.http.routers.traefik-public-http.rule=Host(`${TRAEFIK_DOMAIN:-traefik.local}`)
+      - traefik.http.routers.traefik-public-http.entrypoints=http
+      - traefik.http.routers.traefik-public-http.service=api@internal
+      - traefik.http.routers.traefik-public-http.middlewares=traefik-auth
+      - traefik.http.middlewares.traefik-auth.basicauth.users=admin:$$2y$$05$$CdpY7AVW.bmxlKWeZ3XoSOEPjgwcMdDKn7tEO.AR/piwgKjHFIwuG
       # Define the port inside of the Docker service to use
       - traefik.http.services.traefik-public.loadbalancer.server.port=8080
     command:
