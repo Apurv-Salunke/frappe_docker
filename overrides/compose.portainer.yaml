@@ -2,6 +2,7 @@ services:
   portainer:
     image: portainer/portainer-ce:latest
     restart: unless-stopped
+    command: --trusted-origins=portainer.cirqllabs.com,140.245.11.131
     labels:
       - traefik.enable=true
       - traefik.docker.network=traefik-public
