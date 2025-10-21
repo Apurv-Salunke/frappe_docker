@@ -1,0 +1,15 @@
+services:
+  frontend:
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=traefik-public
+      - traefik.http.routers.frontend.rule=Host(`dev.cirqllabs.com`)
+      - traefik.http.routers.frontend.entrypoints=http
+      - traefik.http.services.frontend.loadbalancer.server.port=8080
+    networks:
+      - traefik-public
+
+networks:
+  traefik-public:
+    external: true
+    name: traefik-public

@@ -1,0 +1,23 @@
+services:
+  portainer:
+    image: portainer/portainer-ce:latest
+    restart: unless-stopped
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=traefik-public
+      - traefik.http.routers.portainer.rule=Host(`${PORTAINER_DOMAIN:-portainer.local}`)
+      - traefik.http.routers.portainer.entrypoints=http
+      - traefik.http.services.portainer.loadbalancer.server.port=9000
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer-data:/data
+    networks:
+      - traefik-public
+
+volumes:
+  portainer-data:
+
+networks:
+  traefik-public:
+    external: true
+    name: traefik-public
