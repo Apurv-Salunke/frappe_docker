@@ -2,36 +2,36 @@ version: "3.3"
 
 services:
   backend:
-    image: frappe/erpnext:develop-arm64
+    image: cirql-labs/frappe-erpnext-wiki:v15-arm64
     platform: linux/arm64
     pull_policy: never
 
   configurator:
-    image: frappe/erpnext:develop-arm64
+    image: cirql-labs/frappe-erpnext-wiki:v15-arm64
     platform: linux/arm64
     pull_policy: never
 
   frontend:
-    image: frappe/erpnext:develop-arm64
+    image: cirql-labs/frappe-erpnext-wiki:v15-arm64
     platform: linux/arm64
     pull_policy: never
 
   queue-long:
-    image: frappe/erpnext:develop-arm64
+    image: cirql-labs/frappe-erpnext-wiki:v15-arm64
     platform: linux/arm64
     pull_policy: never
 
   queue-short:
-    image: frappe/erpnext:develop-arm64
+    image: cirql-labs/frappe-erpnext-wiki:v15-arm64
     platform: linux/arm64
     pull_policy: never
 
   scheduler:
-    image: frappe/erpnext:develop-arm64
+    image: cirql-labs/frappe-erpnext-wiki:v15-arm64
     platform: linux/arm64
     pull_policy: never
 
   websocket:
-    image: frappe/erpnext:develop-arm64
+    image: cirql-labs/frappe-erpnext-wiki:v15-arm64
     platform: linux/arm64
     pull_policy: never

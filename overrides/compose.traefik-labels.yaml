@@ -8,6 +8,7 @@ services:
       - traefik.http.services.frontend.loadbalancer.server.port=8080
     networks:
       - traefik-public
+      - default
 
 networks:
   traefik-public:
